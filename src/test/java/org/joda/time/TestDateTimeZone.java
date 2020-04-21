@@ -1295,4 +1295,16 @@ public class TestDateTimeZone extends TestCase {
         assertEquals(false, str1.equals(str2));
     }
 
+    //////////////////////////////////////////////////////////////////////
+
+    public void testArtificialOffsetWithMilliseconds() throws Exception {
+        // Test for artificial offset with milliseconds
+        String offset = "10:01:01.002";
+
+        TimeZone timeZone = TimeZone.getDefault();
+        timeZone.setID("GMT-" + offset);
+
+        DateTimeZone zone = DateTimeZone.forTimeZone(timeZone);
+        assertEquals(zone.getID(), "-" + offset);
+    }
 }
